@@ -1,0 +1,19 @@
+version: '2'
+services:
+ transmission:
+  image: haugene/transmission-openvpn
+  cap_add:
+    - NET_ADMIN
+  devices:
+    - /dev/net/tun
+  restart: always
+  ports:
+    - "31003:9091"
+  volumes:
+    - /mnt/Tank-02/media:/data # where transmission will store the data
+    - /mnt/Tank-02/configs/transmission/:/config # where transmission-home is stored
+  environment:
+    # - OPENVPN_PROVIDER=PIA
+    # - OPENVPN_USERNAME=username
+    # - OPENVPN_PASSWORD=password
+    - LOCAL_NETWORK=192.168.0.0/16
