@@ -14,6 +14,7 @@ services:
     - /mnt/Tank-02/configs/transmission/:/config # where transmission-home is stored
   environment:
     - OPENVPN_PROVIDER=${OPENVPN_PROVIDER}
+    - OPENVPN_CONFIG=${OPENVPN_CONFIG}
     - OPENVPN_USERNAME=${OPENVPN_USERNAME}
     - OPENVPN_PASSWORD=${OPENVPN_PASSWORD}
     - LOCAL_NETWORK=${LOCAL_NETWORK}
