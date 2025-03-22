@@ -12,5 +12,5 @@ services:
       # - PLEX_CLAIM=
     volumes:
       - /mnt/truenas-system/configs/plex:/config
-      - /mnt/truenas-system/media:/plex
+      - /mnt/truenas-system/media:/data
     restart: unless-stopped
