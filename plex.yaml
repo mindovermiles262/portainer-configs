@@ -5,8 +5,8 @@ services:
     container_name: plex
     network_mode: host
     environment:
-      - PUID=564
-      - PGID=564
+      - PUID=568
+      - PGID=568
       - TZ=America/Denver
       - VERSION=docker
       # - PLEX_CLAIM=
