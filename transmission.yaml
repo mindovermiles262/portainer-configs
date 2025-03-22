@@ -10,8 +10,8 @@ services:
   ports:
     - "31003:9091"
   volumes:
-    - /mnt/Tank-02/media:/data # where transmission will store the data
-    - /mnt/Tank-02/configs/transmission/:/config # where transmission-home is stored
+    - /mnt/truenas-system/media:/data # where transmission will store the data
+    - /mnt/truenas-system/configs/transmission/:/config # where transmission-home is stored
   environment:
     - OPENVPN_PROVIDER=${OPENVPN_PROVIDER}
     - OPENVPN_CONFIG=${OPENVPN_CONFIG}
