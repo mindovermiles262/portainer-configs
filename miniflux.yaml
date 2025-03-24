@@ -1,0 +1,17 @@
+services:
+  miniflux:
+    image: miniflux/miniflux:latest
+    ports:
+      - "31007:8080"
+    networks:
+      - postgres_postgres
+    environment:
+      - DATABASE_URL=${PSQL_CONNECTION_STRING}
+      - RUN_MIGRATIONS=1
+      - CREATE_ADMIN=1
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+
+networks:
+  postgres_postgres:
+    external: true
