@@ -6,7 +6,7 @@ services:
             - "31005:22300"
         restart: unless-stopped
         networks:
-          - postgres
+            - postgres
         environment:
             - APP_PORT=22300
             - APP_BASE_URL=https://joplin.tacoslinux.com
