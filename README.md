@@ -10,5 +10,5 @@ Docker Compose files for various services.
 | 31001       | Pihole HTTP |
 | 31002       | Pihole HTTPS |
 | 31003       | Transmission |
-
+| 31004       | Joplin Sync Server |
 
