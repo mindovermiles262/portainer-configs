@@ -16,7 +16,7 @@ services:
         depends_on:
             - db
         ports:
-            - "31004:22300"
+            - "31005:22300"
         restart: unless-stopped
         environment:
             - APP_PORT=22300
