@@ -12,3 +12,4 @@ Docker Compose files for various services.
 | 31003       | Transmission |
 | 31004       | Nginx Proxy Manager |
 | 31005       | Joplin Sync Server |
+| 31006       | FreshRSS |
