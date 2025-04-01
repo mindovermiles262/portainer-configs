@@ -13,3 +13,5 @@ Docker Compose files for various services.
 | 31004       | Nginx Proxy Manager |
 | 31005       | Joplin Sync Server |
 | 31006       | FreshRSS |
+| 31007       | MiniFlux |
+| 31008       | Syncthing |
