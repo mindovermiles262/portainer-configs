@@ -1,0 +1,19 @@
+---
+services:
+  syncthing:
+    image: lscr.io/linuxserver/syncthing:latest
+    container_name: syncthing
+    hostname: syncthing
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Denver
+    volumes:
+      - /mnt/truenas-system/configs/syncthing:/config
+      - /mnt/truenas-system/homes_shares/aduss/sync:/sync
+    ports:
+      - 31008:8384
+      - 22000:22000/tcp
+      - 22000:22000/udp
+      - 21027:21027/udp
+    restart: unless-stopped
