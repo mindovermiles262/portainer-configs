@@ -10,7 +10,7 @@ services:
       - TZ=America/Denver
     volumes:
       - /mnt/truenas-system/configs/syncthing:/config
-      - /mnt/truenas-system/homes_shares/aduss/sync:/sync
+      - /mnt/truenas-system/homes_shares/aduss/syncthing:/sync
     ports:
       - 31008:8384
       - 22000:22000/tcp
