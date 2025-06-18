@@ -15,3 +15,6 @@ Docker Compose files for various services.
 | 31006       | FreshRSS |
 | 31007       | MiniFlux |
 | 31008       | Syncthing |
+| 31011       | Uptime Kuma |
+| 31013       | QBT |
+| 32105       | Invoice Ninja |

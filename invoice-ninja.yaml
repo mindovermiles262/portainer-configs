@@ -1,0 +1,79 @@
+x-logging: &default-logging
+  options:
+    max-size: "10m"
+    max-file: "3"
+  driver: json-file
+
+services:
+  app:
+    image: invoiceninja/invoiceninja-debian:${TAG:-latest}
+    restart: unless-stopped
+    env_file:
+      - stack.env
+    volumes:
+      - /mnt/truenas-system/configs/invoiceninja/in.env:/var/www/html/.env
+      - /mnt/truenas-system/configs/invoiceninja/app_cache:/var/www/html/bootstrap/cache
+      - /mnt/truenas-system/configs/invoiceninja/app_public:/var/www/html/public
+      - /mnt/truenas-system/configs/invoiceninja/app_storage:/var/www/html/storage
+    networks:
+      - invoiceninja
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    logging: *default-logging
+
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "32105:80"
+    volumes:
+      - /mnt/truenas-system/configs/invoiceninja/nginx:/etc/nginx/conf.d:ro
+      - /mnt/truenas-system/configs/invoiceninja/app_public:/var/www/html/public:ro
+      - /mnt/truenas-system/configs/invoiceninja/app_storage:/var/www/html/storage:ro
+    networks:
+      - invoiceninja
+    depends_on:
+      - app
+    logging: *default-logging
+
+  mysql:
+    image: mysql:8
+    restart: unless-stopped
+    env_file:
+      - stack.env
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - /mnt/truenas-system/configs/invoiceninja/mysql_data:/var/lib/mysql
+    networks:
+      - invoiceninja
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u${MYSQL_USER}", "-p${MYSQL_PASSWORD}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging: *default-logging
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/truenas-system/configs/invoiceninja/redis_data:/data
+    networks:
+      - invoiceninja
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging: *default-logging
+
+networks:
+  invoiceninja:
+    driver: bridge

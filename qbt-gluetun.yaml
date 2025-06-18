@@ -1,0 +1,35 @@
+version: "3"
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: pt-qbittorrent-gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    volumes:
+      - /mnt/truenas-system/configs/gluetun:/gluetun
+    environment:
+      - VPN_SERVICE_PROVIDER=private internet access
+      - OPENVPN_USER=${PIA_USER}
+      - OPENVPN_PASSWORD=${PIA_PASSWD}
+      - SERVER_REGIONS=${PIA_SERVER_REGIONS}
+      - VPN_PORT_FORWARDING=on
+    ports:
+      - 31013:31013
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: pt-qbittorrent
+    network_mode: service:gluetun
+    depends_on:
+      gluetun:
+        condition: service_healthy
+    environment:
+      - PUID=568
+      - PGID=568
+      - TZ=Etc/UTC
+      - WEBUI_PORT=31013
+    volumes:
+      - /mnt/truenas-system/configs/qbittorrent/appdata:/config
+      - /mnt/truenas-system/media:/data
