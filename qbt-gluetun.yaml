@@ -17,6 +17,7 @@ services:
       - VPN_PORT_FORWARDING=on
     ports:
       - 31013:31013
+    restart: unless-stopped
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
