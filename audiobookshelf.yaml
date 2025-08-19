@@ -1,0 +1,12 @@
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - 31014:80
+    volumes:
+      - /mnt/truenas-system/media/audiobooks:/audiobooks
+      - /mnt/truenas-system/media/podcasts:/podcasts
+      - /mnt/truenas-system/configs/audiobookshelf/config:/config
+      - /mnt/truenas-system/configs/audiobookshelf/metadata:/metadata
+    environment:
+      - TZ=America/Denver
