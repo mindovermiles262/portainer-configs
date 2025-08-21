@@ -1,6 +1,7 @@
 services:
   filebrowser:
     image: docker.io/filebrowser/filebrowser:latest
+    user: 568:568
     ports:
       - 31015:80
     volumes:
