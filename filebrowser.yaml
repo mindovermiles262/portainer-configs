@@ -5,6 +5,6 @@ services:
     ports:
       - 31015:80
     volumes:
-      - /mnt/truenas-system/homes_shares/aduss/syncthing:/srv
+      - /mnt/truenas-system/homes_shares/aduss:/srv
       - /mnt/truenas-system/configs/filebrowser/database:/database
       - /mnt/truenas-system/configs/filebrowser/config:/config
