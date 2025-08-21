@@ -6,7 +6,7 @@ Docker Compose files for various services.
 
 | Port Number | Service |
 | ----------- | ------- |
-| 8096        | Jellyfin HTTP |
+| 8096        | Jellyfin HTTP (Host) |
 | 31000       | Portainer HTTPS |
 | 31001       | Pihole HTTP |
 | 31002       | Pihole HTTPS |
@@ -19,4 +19,5 @@ Docker Compose files for various services.
 | 31011       | Uptime Kuma |
 | 31013       | QBT |
 | 31014       | AudioBookShelf |
+| 31015       | FileBrowser |
 | 32105       | Invoice Ninja |
