@@ -18,3 +18,4 @@ services:
       PGID: 568
       TZ: America/Denver
       BASE_URL: ${BASE_URL}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
