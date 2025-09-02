@@ -18,9 +18,3 @@ services:
       PGID: 568
       TZ: America/Denver
       BASE_URL: ${BASE_URL}
-      DB_ENGINE: ${DB_ENGINE}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_SERVER: ${DB_HOST}
-      POSTGRES_PORT: ${DB_PORT}
-      POSTGRES_DB: ${DB_DATABASE}
