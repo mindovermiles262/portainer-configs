@@ -20,4 +20,5 @@ Docker Compose files for various services.
 | 31013       | QBT |
 | 31014       | AudioBookShelf |
 | 31015       | FileBrowser |
+| 31016       | Photoprism |
 | 32105       | Invoice Ninja |
