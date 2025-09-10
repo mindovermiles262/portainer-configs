@@ -21,5 +21,5 @@ Docker Compose files for various services.
 | 31014       | AudioBookShelf |
 | 31015       | FileBrowser |
 | 31016       | Mealie |
-| 31017       | Photoprism |
+| 31017       | Immich |
 | 32105       | Invoice Ninja |
