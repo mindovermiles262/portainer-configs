@@ -1,0 +1,21 @@
+services:
+  mealie:
+    image: ghcr.io/mealie-recipes/mealie:v3.1.2
+    container_name: mealie
+    restart: always
+    ports:
+        - "31016:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+    volumes:
+      - /mnt/truenas-system/configs/mealie/mealie-data:/app/data/
+    environment:
+      # Set Backend ENV Variables Here
+      ALLOW_SIGNUP: "false"
+      PUID: 568
+      PGID: 568
+      TZ: America/Denver
+      BASE_URL: ${BASE_URL}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}

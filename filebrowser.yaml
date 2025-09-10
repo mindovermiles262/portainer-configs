@@ -1,9 +1,10 @@
 services:
   filebrowser:
     image: docker.io/filebrowser/filebrowser:latest
+    user: 3000:3000
     ports:
       - 31015:80
     volumes:
-      - /mnt/truenas-system/homes_shares/aduss/syncthing:/srv
+      - /mnt/truenas-system/homes_shares/aduss:/srv
       - /mnt/truenas-system/configs/filebrowser/database:/database
       - /mnt/truenas-system/configs/filebrowser/config:/config
